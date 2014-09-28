@@ -7,8 +7,7 @@
 //
 
 #import "POAppDelegate.h"
-#import "PORoundsViewController.h"
-#import "POTimerViewController.h"
+#import "POTimeViewController.h"
 
 @implementation POAppDelegate
 
@@ -16,20 +15,16 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    POTimeViewController *viewController = [POTimeViewController new];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:viewController];
+    self.window.rootViewController = navController;
 
-    POTimerViewController *timerViewController = [POTimerViewController new];
-    timerViewController.tabBarItem.title = @"Timer";
-    timerViewController.tabBarItem.image = [UIImage imageNamed:@"timer"];
+    // removes background and hairline shadow from the nav bar.
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
 
-    PORoundsViewController *roundsViewController = [PORoundsViewController new];
-    roundsViewController.tabBarItem.title = @"Rounds";
-    roundsViewController.tabBarItem.image = [UIImage imageNamed:@"rounds"];
-
-    UITabBarController *tabBarController = [UITabBarController new];
-    tabBarController.viewControllers = @[timerViewController, roundsViewController];
-    tabBarController.selectedViewController = timerViewController;
-
-    self.window.rootViewController = tabBarController;
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
