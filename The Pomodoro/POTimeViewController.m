@@ -11,8 +11,8 @@
 
 @interface POTimeViewController ()
 
-@property (nonatomic) NSInteger *minutes;
-@property (nonatomic) NSInteger *seconds;
+@property (nonatomic, assign) NSInteger minutes;
+@property (nonatomic, assign) NSInteger seconds;
 @property (nonatomic) BOOL isWork;
 @property (weak, nonatomic) IBOutlet UIButton *tapButton;
 
@@ -34,14 +34,15 @@
     [self.navigationItem setRightBarButtonItem:settingsButton];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-
+    // temporary until i can get the minutes selected into NSUserDefaults and read out again.
+    _minutes = 11;
+    _seconds = 9;
+    _timeValue.text = [NSString stringWithFormat:@"%ld:0%ld", (long)_minutes, (long)_seconds];
 }
 
 
 - (void)viewSettings {
-    NSLog(@"view settings method");
-
-    POSettingsViewController *settingsController = [POSettingsViewController new];
+     POSettingsViewController *settingsController = [POSettingsViewController new];
     [self.navigationController pushViewController:settingsController animated:YES];
 }
 
@@ -49,6 +50,45 @@
     NSLog(@"start the timer");
     _tapButton.hidden = YES;
 
+    [self decreaseTime];
+
+}
+
+-(void)decreaseTime {
+    _isWork = YES;
+    if (_seconds > 0 ) {
+        _seconds--;
+    }
+
+    if (_minutes > 0) {
+        if (_seconds == 0) {
+            _seconds = 59;
+            _minutes--;
+
+        }
+    } else {
+
+        if (_seconds == 0) {
+            NSLog(@"Time has ended");
+
+            _isWork = NO;
+        }
+    }
+
+    [self updateTimeLabel];
+
+    if (_isWork) {
+        [self performSelector:@selector(decreaseTime) withObject:nil afterDelay:1.0];
+    }
+
+}
+
+-(void)updateTimeLabel {
+    if (_seconds < 10) {
+        _timeValue.text = [NSString stringWithFormat:@"%ld:0%ld", (long)_minutes, (long)_seconds];
+    } else {
+        _timeValue.text = [NSString stringWithFormat:@"%ld:%ld",(long)_minutes, (long)_seconds];
+    }
 }
 
 

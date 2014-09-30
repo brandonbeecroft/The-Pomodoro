@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="80" translatesAutoresizingMaskIntoConstraints="NO" id="AZQ-PA-Nxe">
-                    <rect key="frame" x="43" y="153" width="288" height="81"/>
+                    <rect key="frame" x="24" y="153" width="329" height="81"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="81" id="o8w-m3-Q9v"/>
                     </constraints>
@@ -96,13 +96,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="AZQ-PA-Nxe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DR8-3O-xeh"/>
+                <constraint firstItem="AZQ-PA-Nxe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="1" id="DR8-3O-xeh"/>
                 <constraint firstItem="VKd-K7-Pvu" firstAttribute="top" secondItem="AZQ-PA-Nxe" secondAttribute="bottom" constant="51" id="Mvo-Uc-t8W"/>
                 <constraint firstItem="AZQ-PA-Nxe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="153" id="THn-KG-8JK"/>
                 <constraint firstAttribute="bottom" secondItem="jpv-Rz-cZa" secondAttribute="bottom" id="Zkh-AZ-fDB"/>
                 <constraint firstAttribute="centerX" secondItem="VKd-K7-Pvu" secondAttribute="centerX" id="pKa-U2-pYm"/>
-                <constraint firstItem="jpv-Rz-cZa" firstAttribute="centerX" secondItem="AZQ-PA-Nxe" secondAttribute="centerX" id="u0g-fr-aDj"/>
-                <constraint firstItem="AZQ-PA-Nxe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="43" id="vaI-h7-d0A"/>
+                <constraint firstItem="jpv-Rz-cZa" firstAttribute="centerX" secondItem="AZQ-PA-Nxe" secondAttribute="centerX" constant="-1" id="u0g-fr-aDj"/>
+                <constraint firstItem="AZQ-PA-Nxe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="vaI-h7-d0A"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
