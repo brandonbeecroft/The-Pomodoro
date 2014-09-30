@@ -11,6 +11,15 @@
 
 @interface POTimeViewController ()
 
+@property (nonatomic) NSInteger *minutes;
+@property (nonatomic) NSInteger *seconds;
+@property (nonatomic) BOOL isWork;
+@property (weak, nonatomic) IBOutlet UIButton *tapButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *roundValue;
+@property (weak, nonatomic) IBOutlet UILabel *breakValue;
+@property (weak, nonatomic) IBOutlet UILabel *timeValue;
+
 @end
 
 @implementation POTimeViewController
@@ -23,13 +32,11 @@
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settingsIcon"] style:UIBarButtonItemStyleDone target:self action:@selector(viewSettings)];
     settingsButton.tintColor = [UIColor whiteColor];
     [self.navigationItem setRightBarButtonItem:settingsButton];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)viewSettings {
     NSLog(@"view settings method");
@@ -38,14 +45,11 @@
     [self.navigationController pushViewController:settingsController animated:YES];
 }
 
-/*
-#pragma mark - Navigation
+- (IBAction)tapToStart:(id)sender {
+    NSLog(@"start the timer");
+    _tapButton.hidden = YES;
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

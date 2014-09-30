@@ -123,11 +123,10 @@
 				7141B2F5193DBDFD0084F9F1 /* POAppDelegate.m */,
 				E879560119D7A9550054F5B0 /* POTimeViewController.h */,
 				E879560219D7A9550054F5B0 /* POTimeViewController.m */,
-				E879560319D7A9550054F5B0 /* POTimeViewController.xib */,
 				E879560F19D7BC4B0054F5B0 /* POSettingsViewController.h */,
 				E879561019D7BC4B0054F5B0 /* POSettingsViewController.m */,
-				E879561119D7BC4B0054F5B0 /* POSettingsViewController.xib */,
 				7141B2F7193DBDFD0084F9F1 /* Images.xcassets */,
+				E8F3A71419DA59210062FC9A /* views */,
 				7141B2EC193DBDFD0084F9F1 /* Supporting Files */,
 			);
 			path = "The Pomodoro";
@@ -169,6 +168,15 @@
 				E879560D19D7B18B0054F5B0 /* settingsIcon.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		E8F3A71419DA59210062FC9A /* views */ = {
+			isa = PBXGroup;
+			children = (
+				E879561119D7BC4B0054F5B0 /* POSettingsViewController.xib */,
+				E879560319D7A9550054F5B0 /* POTimeViewController.xib */,
+			);
+			name = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
