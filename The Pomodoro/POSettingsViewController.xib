@@ -76,7 +76,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="5" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="ik0-yv-ssj">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="ik0-yv-ssj">
                     <rect key="frame" x="62" y="144" width="233" height="31"/>
                     <color key="tintColor" red="0.070588238540000001" green="0.79607850309999995" blue="0.96078437569999997" alpha="1" colorSpace="deviceRGB"/>
                     <connections>

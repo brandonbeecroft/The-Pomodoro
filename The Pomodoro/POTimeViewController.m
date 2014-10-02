@@ -24,6 +24,14 @@
 
 @implementation POTimeViewController
 
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        [self registerForNotifications];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -35,15 +43,32 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     // temporary until i can get the minutes selected into NSUserDefaults and read out again.
-    _minutes = 11;
-    _seconds = 9;
-    _timeValue.text = [NSString stringWithFormat:@"%ld:0%ld", (long)_minutes, (long)_seconds];
-}
+    //_minutes = 11;
 
+    //load the minutes as saved from the settings screen and display in the label.
+    _minutes = [[[NSUserDefaults standardUserDefaults] objectForKey:@"roundValue"] integerValue];
+    _seconds = 0;
+    _timeValue.text = [NSString stringWithFormat:@"%ld:0%ld", (long)_minutes, (long)_seconds];
+    //NSLog(@"Initial minutes are: %ld", (long)_minutes);
+
+}
 
 - (void)viewSettings {
      POSettingsViewController *settingsController = [POSettingsViewController new];
     [self.navigationController pushViewController:settingsController animated:YES];
+}
+
+#pragma mark - Notifications
+-(void)registerForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(valueChanged:) name:newTimeNotification object:nil];
+}
+
+-(void)unregisterForNotifications {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:newTimeNotification object:nil];
+}
+
+-(void) dealloc {
+    [self unregisterForNotifications];
 }
 
 - (IBAction)tapToStart:(id)sender {
@@ -51,7 +76,6 @@
     _tapButton.hidden = YES;
 
     [self decreaseTime];
-
 }
 
 -(void)decreaseTime {
@@ -90,6 +114,15 @@
         _timeValue.text = [NSString stringWithFormat:@"%ld:%ld",(long)_minutes, (long)_seconds];
     }
 }
+
+-(void)valueChanged:(NSNotification *)notification {
+    _minutes = [notification.userInfo[newTimeNotification] integerValue];
+    NSLog(@"Value changed minutes value is: %li", (long)_minutes);
+    _seconds = 0;
+
+    [self updateTimeLabel];
+}
+
 
 
 @end

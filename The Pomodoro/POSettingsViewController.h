@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString * const timeKey = @"time";
+static NSString * const newTimeNotification = @"newTimeKey";
+
 @interface POSettingsViewController : UIViewController
 
 @end
